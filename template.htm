@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test flash</title>
+    <style>
+        .alert {
+            text-align: center;
+            font-size: 30px;
+            color: white;
+            padding: 30px;
+        }
+
+        .alert.alert-danger {background-color: rgb(228, 69, 69);}
+        .alert.alert-warning {background-color: rgb(208, 124, 34);}
+        .alert.alert-success {background-color: rgb(12, 148, 62);}
+    </style>
+</head>
+<body>
+    {% with messages =  get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endwith %}
+</body>
+</html>
