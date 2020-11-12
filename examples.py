@@ -13,6 +13,7 @@ class LoginSuccess(FlaskInform):
     m: 'You successfully logged in'
     l: Attention.success
 
+
 app = Flask(__name__, template_folder='.')
 app.secret_key = 'secret'
 
@@ -20,7 +21,7 @@ app.secret_key = 'secret'
 def a():
     try:
         raise Unauthorized
-    except Exception as e:
+    except FlaskInform as e:
         e.flash() # Equivalent to flash('Login is required', 'warning')
     return render_template('template.htm')
 
@@ -28,7 +29,7 @@ def a():
 def b():
     try:
         raise Unauthorized
-    except Exception as e:
+    except FlaskInform as e:
         e.flash('go to /login') # Equivalent to flash('Login is required: go to /login', 'warning')
     return render_template('template.htm')
 
