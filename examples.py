@@ -4,6 +4,7 @@ from main import FlaskInform, Attention
 class PasswordIsNotCorrect(FlaskInform):
     m: 'Password is incorrect'
     # l: 'danger' by default
+    # d: ': ' by default
 
 class Unauthorized(FlaskInform):
     m: 'Login is required'
@@ -12,6 +13,7 @@ class Unauthorized(FlaskInform):
 class LoginSuccess(FlaskInform):
     m: 'You successfully logged in'
     l: Attention.success
+    d: ', '
 
 
 app = Flask(__name__, template_folder='.')
@@ -41,7 +43,7 @@ def c():
 @app.route('/success-example')
 def d():
     username = 'phantie'
-    LoginSuccess.flash(username) # Equivalent to flash('You successfully logged in: phantie', 'success')
+    LoginSuccess.flash(username) # Equivalent to flash('You successfully logged in, phantie', 'success')
     return render_template('template.htm')
 
 if __name__ == "__main__":
